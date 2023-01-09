@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -10,7 +9,14 @@
 // ***********************************************
 //
 //
-// -- This is a parent command --
+// Cypress.Commands.add("openApp", (name) => {
+//   if (name === "isMailOpen") {
+//     return cy.exec("tasklist").then((result) => {
+//       return result.stdout.includes("outlook.exe");
+//     });
+//   }
+// });
+// // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 //

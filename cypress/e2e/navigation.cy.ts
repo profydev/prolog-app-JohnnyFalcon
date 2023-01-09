@@ -1,6 +1,10 @@
 describe("Sidebar Navigation", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/dashboard");
+    cy.visit("http://localhost:3000/dashboard", {
+      onBeforeLoad(win) {
+        cy.stub(win, "open");
+      },
+    });
   });
 
   context("desktop resolution", () => {
@@ -29,6 +33,10 @@ describe("Sidebar Navigation", () => {
       cy.get("nav")
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
+
+      // check if mail app window is open
+      cy.get("nav").contains("Support").click();
+      cy.window().its("open").should("be.called");
     });
 
     it("is collapsible", () => {
