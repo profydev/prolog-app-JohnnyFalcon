@@ -29,6 +29,9 @@ describe("Sidebar Navigation", () => {
       cy.get("nav")
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
+      // check if mail app window is open
+
+      cy.get("nav").contains("Support").click();
     });
 
     it("is collapsible", () => {
