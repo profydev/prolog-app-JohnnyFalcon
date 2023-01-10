@@ -219,6 +219,7 @@ export function SidebarNavigation() {
               iconSrc="/icons/support.svg"
               isCollapsed={isSidebarCollapsed}
               href="mailto:support@prolog-app.com?subject=Support Request:"
+
             />
 
             <CollapseMenuItem
