@@ -1,10 +1,6 @@
 describe("Sidebar Navigation", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/dashboard", {
-      onBeforeLoad(win) {
-        cy.stub(win, "open");
-      },
-    });
+    cy.visit("http://localhost:3000/dashboard");
   });
 
   context("desktop resolution", () => {
