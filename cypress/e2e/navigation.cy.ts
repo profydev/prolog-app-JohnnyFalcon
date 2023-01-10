@@ -1,6 +1,10 @@
 describe("Sidebar Navigation", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/dashboard");
+    cy.visit("http://localhost:3000/dashboard", {
+      onBeforeLoad(win) {
+        cy.stub(win, "open");
+      },
+    });
   });
 
   context("desktop resolution", () => {
@@ -31,7 +35,7 @@ describe("Sidebar Navigation", () => {
         .should("have.attr", "href", "/dashboard/settings");
 
       // check if mail app window is open
-
+      
       cy.get("nav")
         .contains("Support")
         .should(
@@ -39,6 +43,7 @@ describe("Sidebar Navigation", () => {
           "href",
           "mailto:support@prolog-app.com?subject=Support Request:"
         );
+
     });
 
     it("is collapsible", () => {
