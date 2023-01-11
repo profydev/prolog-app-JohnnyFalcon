@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   body {
     font-family: Inter, Sans-Serif;
     color: ${color("gray", 900)};
+    
   }
 
   a {
