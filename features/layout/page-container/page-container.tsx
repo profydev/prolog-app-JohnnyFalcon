@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import { SidebarNavigation } from "../sidebar-navigation";
 import { color, displayFont, textFont, space, breakpoint } from "@styles/theme";
-
+import { Footer } from "../footer";
+import { NavigationContext } from "../sidebar-navigation";
 type PageContainerProps = {
   children: React.ReactNode;
   title: string;
@@ -21,6 +22,7 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
+  position: relative;
   flex: 1;
 `;
 
@@ -52,10 +54,19 @@ const Info = styled.div`
   ${textFont("md", "regular")}
 `;
 
+// invisible div to prevent content from going under footer
+const InvDiv = styled.div`
+  width: 100%;
+  height: 60px;
+`;
+
 export function PageContainer({ children, title, info }: PageContainerProps) {
   // combine title in a single string to prevent below warning
   // "Warning: A title element received an array with more than 1 element as children."
   const documentTitle = `ProLog - ${title}`;
+
+  const { isMobile } = useContext(NavigationContext);
+
   return (
     <Container>
       <Head>
@@ -64,13 +75,17 @@ export function PageContainer({ children, title, info }: PageContainerProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SidebarNavigation />
+      {!isMobile && <SidebarNavigation />}
+
       <Main>
+        {isMobile && <SidebarNavigation />}
         <ContentContainer>
           <Title>{title}</Title>
           <Info>{info}</Info>
           {children}
+          <InvDiv></InvDiv>
         </ContentContainer>
+        <Footer />
       </Main>
     </Container>
   );

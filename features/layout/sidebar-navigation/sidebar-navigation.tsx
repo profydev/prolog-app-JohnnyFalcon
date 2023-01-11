@@ -156,26 +156,9 @@ const CollapseMenuItem = styled(MenuItemButton)<{ isCollapsed: boolean }>`
 
 export function SidebarNavigation() {
   const router = useRouter();
-  const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
+  const { isSidebarCollapsed, toggleSidebar, isMobile } =
+    useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      if (window.innerWidth <= 1024) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-
-    window.addEventListener("resize", handleWindowResize);
-
-    console.log(isMobile);
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
 
   return (
     <Container isCollapsed={isSidebarCollapsed}>
