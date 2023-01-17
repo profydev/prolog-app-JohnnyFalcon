@@ -30,12 +30,6 @@ Now you can open [http://localhost:3000](http://localhost:3000) with your browse
 
 ## Tests
 
-This project is covered with Cypress tests. Although most tests for production apps are currently written with React Testing Library, Cypress is the best option to get started with testing. When you're new to testing the start can be very cumbersome and feel like you're in a completely new dev environment.
-
-Cypress makes it much easier to get started with testing. You still have to get used to the new way of coding but thanks to its awesome UI debugging is easy and very similar to what you're used from your browser.
-
-![Cypress test](docs/cypress.gif)
-
 To run the Cypress tests on your local machine use this command:
 
 ```bash
